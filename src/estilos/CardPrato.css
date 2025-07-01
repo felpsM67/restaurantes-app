@@ -1,0 +1,91 @@
+.CardPrato {
+  display: grid;
+  grid-template-columns: repeat(3, 2fr);
+  gap: 20px;
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+  
+  .CardPrato > div {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+  
+  .CardPrato > div:hover {
+    transform: scale(1.03);
+  }
+  
+  .CardPrato img {
+    width: 100%;
+    height: auto;
+    display: block;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .nome-prato {
+    font-size: 1.5rem;
+    margin: 16px;
+    color: #333;
+  }
+  
+  .cozinha-prato {
+    font-size: 1rem;
+    margin: 0 16px;
+    color: #888;
+    font-style: italic;
+  }
+  
+  .descricao-curta-prato {
+    font-size: 0.95rem;
+    margin: 12px 16px;
+    color: #555;
+    line-height: 1.4;
+  }
+  
+  .btn {
+    display: inline-block;
+    margin: 16px;
+    padding: 10px 20px;
+    background-color: #e63946;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #df2626;
+  }
+  
+  .banner {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    margin-bottom: 30px;
+  }
+  
+  .banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.7);
+  }
+  
+  .titulo-banner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+  }
+  
