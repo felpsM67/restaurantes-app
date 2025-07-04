@@ -54,11 +54,20 @@ useEffect(() => {
       };
   
       if (isEditing && id) {
+<<<<<<< HEAD
         await api.put(`/pratos/${id}`, dados);
         navigate('/')
       } else {
         await api.post("/pratos", dados);
         alert("Prato cadastrado com sucesso!");
+=======
+        await api.put(`/pratos/${id}`, {...dados});
+        navigate('/')
+      } else {
+        await api.post("/pratos", {...dados});
+        alert("Prato cadastrado com sucesso!")
+        navigate('/')
+>>>>>>> 0851630 (Alteração básica)
       }
     } catch (error) {
       console.error("Erro ao salvar prato:", error);
