@@ -5,18 +5,6 @@ import CardNovoPrato from "./CardNovoPrato";
 import { Link, useNavigate } from "react-router-dom";
 import banner from "../assets/banner.png";
 
-<<<<<<< HEAD
-const CardPrato = () => {
-  const [pratos, setPratos] = useState<any[]>([]);
-  const [menuAberto, setMenuAberto] = useState<number | null>(null);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    api
-      .get("/pratos")
-      .then((res) => setPratos(res.data))
-      .catch((err) => console.error("Erro ao buscar pratos:", err));
-=======
 
 interface PratoApi {
   id: number;
@@ -43,7 +31,6 @@ const CardPrato = () => {
   useEffect(() => {
     
     fetchData()
->>>>>>> 0851630 (Alteração básica)
   }, []);
 
   const toggleMenu = (id: number) => {
@@ -58,11 +45,7 @@ const CardPrato = () => {
     if (window.confirm("Tem certeza que deseja deletar este prato?")) {
       try {
         await api.delete(`/pratos/${id}`);
-<<<<<<< HEAD
-        setPratos(pratos.filter((p) => p.id !== id));
-=======
         fetchData();
->>>>>>> 0851630 (Alteração básica)
       } catch (error) {
         console.error("Erro ao deletar prato:", error);
         alert("Erro ao deletar prato.");
@@ -79,11 +62,7 @@ const CardPrato = () => {
       <CardNovoPrato />
 
       <div className="CardPrato">
-<<<<<<< HEAD
-        {pratos.map((item) => (
-=======
         {pratos && pratos.map((item) => (
->>>>>>> 0851630 (Alteração básica)
           <div key={item.id} className="prato-card">
             <div className="menu-wrapper">
               <button onClick={() => toggleMenu(item.id)} className="menu-button">⋮</button>
