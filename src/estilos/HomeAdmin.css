@@ -1,0 +1,20 @@
+.tabela-container {
+  display: flex; /* Torna o contêiner um flex container */
+  justify-content: center; /* Centraliza o conteúdo horizontalmente */
+  align-items: center; /* Centraliza o conteúdo verticalmente (se o contêiner tiver altura definida) */
+  /* Outras propriedades de layout podem ser aplicadas aqui */
+}
+
+table {
+  /* Estilos da tabela */
+  width: 80%; /* Exemplo de ajuste de largura */
+  border-collapse: collapse;
+}
+
+tr,
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}

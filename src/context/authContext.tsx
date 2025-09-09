@@ -1,14 +1,15 @@
 import React, { createContext, useState, useEffect, ReactNode } from "react";
+import Usuario from "../interface/Usuario";
 
 interface AuthContextType {
-  usuario: any;
+  usuario: Usuario | null;
   verificarLogin: () => void;
 }
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [usuario, setUsuario] = useState<any>(null);
+  const [usuario, setUsuario] = useState<Usuario|null>(null);
 
   const verificarLogin = () => {
     const token = localStorage.getItem("token");

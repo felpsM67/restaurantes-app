@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import "../estilos/Home.css";
 import terraDasAguas from "../assets/terra_das_aguas.jpg";
-import CardPrato from "./CardPrato";
-import CardNovoPrato from "./CardNovoPrato";
 import { AuthContext } from "../context/authContext";
+import HomeCard from "./HomeCard";
+import HomeAdmin from "./HomeAdmin";
 
 function Home() {
   const [prato, setPrato] = React.useState({
@@ -28,34 +28,15 @@ function Home() {
       <div className="banner">
         <img src={terraDasAguas} alt="" />
       </div>
-      <h1>Bem vindo ao Restaurante Terra das Aguas SENAC - MS</h1>
-      <div className="lista-pratos">
-        <CardNovoPrato />
-        <CardPrato
-          usuario={usuario}
-          nome={prato.nome}
-          cozinha={prato.cozinha}
-          descricaoCurta={prato.descricaoCurta}
-          imagem={prato.imagem}
-        />
-        <CardPrato
-          nome={prato.nome}
-          cozinha={prato.cozinha}
-          descricaoCurta={prato.descricaoCurta}
-          imagem={prato.imagem}
-        />
-        <CardPrato
-          nome={prato.nome}
-          cozinha={prato.cozinha}
-          descricaoCurta={prato.descricaoCurta}
-          imagem={prato.imagem}
-        />
-        <CardPrato
-          nome={prato.nome}
-          cozinha={prato.cozinha}
-          descricaoCurta={prato.descricaoCurta}
-          imagem={prato.imagem}
-        />
+      <div style={{ textAlign: "center" }}>
+        <h1>Bem vindo ao Restaurante Terra das Aguas SENAC - MS</h1>
+        {usuario?.role === "Gerente" ? (
+          <div className="content-body">
+            <HomeAdmin />
+          </div>
+        ) : (
+          <HomeCard prato={prato} usuario={usuario} />
+        )}
       </div>
     </div>
   );

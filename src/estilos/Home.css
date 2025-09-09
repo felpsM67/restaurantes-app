@@ -29,3 +29,10 @@
   gap: 1.8rem;
   justify-content: center;
 }
+
+.content-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}

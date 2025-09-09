@@ -7,10 +7,8 @@ const CardNovoPrato = () => {
 
   return (
     <Link to="/cadastro-prato" className="link-card">
-      <div className="prato-card">
-        <img src={adicionarPrato} alt="Imagem do prato" />
+        <img src={adicionarPrato} className="image-novo-prato" alt="Imagem do prato" />
         <h2>Clique aqui para adicionar um novo prato</h2>
-      </div>
     </Link>
   );
 };

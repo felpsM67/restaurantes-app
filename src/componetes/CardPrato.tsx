@@ -14,10 +14,12 @@ interface CardPratoProps {
 }
 
 const CardPrato: FC<CardPratoProps> = (props) => {
+
+  console.log(props.usuario);
   return (
     <>
       <div className="prato-card">
-        {props.usuario?.role === "Funcionario" && (
+        {props.usuario?.role === "Cliente" && (
           <div className="menu-container">
             <button className="menu-button" onClick={() => {}}>
               &#x22EE;

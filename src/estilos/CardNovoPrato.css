@@ -1,10 +1,18 @@
 .link-card {
-    width: calc(50% - 1.2rem);
-    max-width: 400px;
-    margin: 0;
-    padding: 0;
-    gap: 2;
-    display: flex;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: calc(50% - 1.2rem); /* 2 cards por linha com espaçamento */
+  max-width: 400px;
+  padding: 1rem;
+  text-align: left;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  margin: 0.5rem; /* Espaçamento entre os cards */
+}
+
+.image-novo-prato {
+  max-width: 100%;
 }
 
 /* Estilo dos cards */
