@@ -10,7 +10,7 @@ function DetalhesPrato() {
   const [prato, setPrato] = useState<any>(null);
 
   useEffect(() => {
-    api.get(`/pratos/${id}`)
+    api.get(`api/pratos/${id}`)
       .then((res) => setPrato(res.data))
       .catch((err) => {
         console.error("Erro ao buscar prato:", err);

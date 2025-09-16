@@ -22,7 +22,7 @@ const CardPrato = () => {
 
   const fetchData = async () => {
     try {
-      const {data} = await api.get("/pratos")
+      const {data} = await api.get("api/pratos")
       setPratos(data)
     } catch (error) {
       console.error("Erro ao listar pratos:", error);
@@ -38,13 +38,13 @@ const CardPrato = () => {
   };
 
   const editarPrato = (id: number) => {
-    navigate(`/editar-prato/${id}`);
+    navigate(`api/prato/${id}`);
   };
 
   const deletarPrato = async (id: number) => {
     if (window.confirm("Tem certeza que deseja deletar este prato?")) {
       try {
-        await api.delete(`/pratos/${id}`);
+        await api.delete(`api/pratos/${id}`);
         fetchData();
       } catch (error) {
         console.error("Erro ao deletar prato:", error);

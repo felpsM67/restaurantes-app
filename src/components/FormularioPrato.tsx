@@ -26,7 +26,7 @@ const { id } = useParams<{ id: string }>();
 useEffect(() => {
 
   if (isEditing && id) {
-    api.get(`/pratos/${id}`).then((response) => {
+    api.get(`api/pratos/${id}`).then((response) => {
       const prato = response.data;
       setForm({
         nome: prato.nome,
@@ -54,10 +54,12 @@ useEffect(() => {
       };
   
       if (isEditing && id) {
-        await api.put(`/pratos/${id}`, {...dados});
+        await api.put(`api/pratos/${id}`, {...dados});
         navigate('/')
+        
       } else {
-        await api.post("/pratos", {...dados});
+        console.log("estou sendo chamado")
+        await api.post("api/pratos", {...dados});
         alert("Prato cadastrado com sucesso!")
         navigate('/')
       }

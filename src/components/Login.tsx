@@ -8,6 +8,7 @@ import Snackbar, { SnackbarProps } from "./Snackbar";
 import Container from "./Container";
 import "../estilos/Login.css";
 
+
 export default function Login() {
   const { values, errors, handleChange, validate } = useForm({
     email: "",
@@ -33,7 +34,7 @@ export default function Login() {
         token: string;
         refreshToken: string;
         message: string;
-      }>('/login', {
+      }>('api/login', {
         email: values.email,
         senha: values.senha,
       });
@@ -84,6 +85,7 @@ export default function Login() {
         type="button"
         className="bg-blue-500 text-white py-2 hover:bg-blue-600"
         onClick={login}
+        
       >
         Entrar
       </Button>
