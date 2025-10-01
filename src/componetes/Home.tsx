@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import "../estilos/Home.css";
-import terraDasAguas from "../assets/terra_das_aguas.jpg";
+import terraDasAguas from "../assets/terra_das_aguas.png";
 import { AuthContext } from "../context/authContext";
 import HomeCard from "./HomeCard";
 import HomeAdmin from "./HomeAdmin";
+import Carrinho from "./Carrinho";
 
 function Home() {
   const [prato, setPrato] = React.useState({
@@ -27,6 +28,9 @@ function Home() {
     <div className="home">
       <div className="banner">
         <img src={terraDasAguas} alt="" />
+      </div>
+      <div>
+        <Carrinho />
       </div>
       <div style={{ textAlign: "center" }}>
         <h1>Bem vindo ao Restaurante Terra das Aguas SENAC - MS</h1>
