@@ -1,37 +1,88 @@
-import React from "react";
-import "../estilos/FormularioPrato.css"; // Importando o CSS específico para o componente
+import React, { use, useState, useEffect,  } from "react";
+import api from "../http/api";
+import "../estilos/FormularioPrato.css";
+import { useNavigate, useParams } from "react-router-dom";
 
-const FormularioPrato: React.FC = () => {
+
+interface FormularioPratoProps {
+  isEditing?: boolean;
+}
+
+const FormularioPrato: React.FC <FormularioPratoProps> = ({isEditing}) => {
+  const navigate = useNavigate();
+  const [form, setForm] = useState({
+    nome: "",
+    cozinha: "",
+    descricao_resumida: "",
+    descricao_detalhada: "",
+    valor: 0,
+    imagem: "",
+  });
+
+
+const { id } = useParams<{ id: string }>();
+
+useEffect(() => {
+
+  if (isEditing && id) {
+    api.get(`/api/pratos/${id}`).then((response) => {
+      const prato = response.data;
+      setForm({
+        nome: prato.nome,
+        cozinha: prato.cozinha,
+        descricao_resumida: prato.descricao_resumida,
+        descricao_detalhada: prato.descricao_detalhada,
+        valor: prato.valor,
+        imagem: prato.imagem,
+      });
+    });
+  }
+}, [isEditing, id]); 
+
+  
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const dados = {
+        ...form,
+        valor: Number(form.valor),
+      };
+  
+      if (isEditing && id) {
+        await api.put(`/api/pratos/${id}`, {...dados});
+        navigate('/')
+        
+      } else {
+        console.log("estou sendo chamado")
+        await api.post("/api/pratos", {...dados});
+        alert("Prato cadastrado com sucesso!")
+        navigate('/')
+      }
+    } catch (error) {
+      console.error("Erro ao salvar prato:", error);
+      alert("Erro ao salvar prato.");
+    }
+  };
+  
+  
+
   return (
-    <>
-      <div className="form-container">
-        <h1>Cadastro de Pratos</h1>
-        <p>Bem-vindo ao sistema de cadastro de pratos!</p>
-        <input type="text" name="nome" placeholder="Digite o nome do prato" />
-        <input
-          type="text"
-          name="cozinha"
-          placeholder="Digite o tipo de cozinha do prato"
-        />
-        <input
-          type="text"
-          name="descricao-resumida"
-          placeholder="Digite a descrição resumida do prato"
-        />
-        <input
-          type="text"
-          name="descricao-detalhada"
-          placeholder="Digite a descrição detalhada do prato"
-        />
-        <input
-          type="text"
-          name="imagem"
-          placeholder="Digite a url da imagem do prato"
-        />
-        <input type="text" name="valor" placeholder="Digite o valor do prato" />
+    <div className="form-container">
+      <h1>Cadastro de Pratos</h1>
+      <form onSubmit={handleSubmit}>
+        <input name="nome" placeholder="Nome" value={form.nome} onChange={handleChange} />
+        <input name="cozinha" placeholder="Cozinha"value={form.cozinha} onChange={handleChange} />
+        <input name="descricao_resumida" placeholder="Descrição resumida"value={form.descricao_resumida} onChange={handleChange} />
+        <input name="descricao_detalhada" placeholder="Descrição detalhada" value={form.descricao_detalhada} onChange={handleChange} />
+        <input name="valor" placeholder="Valor" value={form.valor} onChange={handleChange} />
+        <input name="imagem" placeholder="URL da imagem" value={form.imagem} onChange={handleChange} />
         <button type="submit">Cadastrar Prato</button>
-      </div>
-    </>
+      </form>
+    </div>
   );
 };
 

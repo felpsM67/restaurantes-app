@@ -12,7 +12,7 @@ interface HomeCardProps {
 export default function HomeCard(props: HomeCardProps) {
   return (
     <div className="lista-pratos">
-        <CardNovoPrato />
+
         {
             props.usuario ?
 

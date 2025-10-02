@@ -35,6 +35,7 @@ export default function Carrinho() {
               </div>
               <div className="acoes_carrinho">
                 <button>Finalizar Compra</button>
+                <button onClick={() => setIsOpen(false)}>Continuar Comprando</button>
               </div>
             </div>
             </div>
